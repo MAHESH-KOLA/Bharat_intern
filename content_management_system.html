@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Management Tool</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .editor {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+  }
+  #content {
+    width: 100%;
+    min-height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+</style>
+</head>
+<body>
+<header>
+  <h1>Content Management Tool</h1>
+</header>
+<div class="container">
+  <div class="editor">
+    <h2>Create Blog Content</h2>
+    <div id="content" contenteditable="true">
+      <!-- Editable content will be displayed here -->
+    </div>
+    <button id="addImage" >Add Image</button>
+    <button id="addVideo">Add Video</button>
+    <button id="createBlog">Create Blog</button>
+  </div>
+</div>
+<script>
+  const contentDiv = document.getElementById('content');
+  const addImageBtn = document.getElementById('addImage');
+  const addVideoBtn = document.getElementById('addVideo');
+  const createBlogBtn = document.getElementById('createBlog');
+
+  addImageBtn.addEventListener('click', () => {
+    const imageUrl = prompt('Enter image URL:');
+    if (imageUrl) {
+      const img = document.createElement('img');
+      img.src = imageUrl;
+      contentDiv.appendChild(img);
+    }
+  });
+
+  addVideoBtn.addEventListener('click', () => {
+    const videoUrl = prompt('Enter video URL:');
+    if (videoUrl) {
+      const video = document.createElement('iframe');
+      video.src = videoUrl;
+      video.width = '100%';
+      video.height = '315';
+      contentDiv.appendChild(video);
+    }
+  });
+
+  createBlogBtn.addEventListener('click', () => {
+    const blogContent = contentDiv.innerHTML;
+    // You can send the blog content to a server for further processing or storage
+    console.log('Blog Content:', blogContent);
+  });
+</script>
+</body>
+</html>

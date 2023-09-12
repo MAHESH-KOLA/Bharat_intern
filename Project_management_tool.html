@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Management Tool</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .user-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  .user-list li {
+    margin: 10px 0;
+  }
+  .task-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  .task-list li {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Project Management Tool</h1>
+</header>
+<div class="container">
+  <h2>Social Media Framework</h2>
+  <ul class="user-list" id="userList">
+    <!-- User list will be displayed here -->
+  </ul>
+  <h2>Task Assignment</h2>
+  <ul class="task-list" id="taskList">
+    <!-- Task list will be displayed here -->
+  </ul>
+</div>
+<script>
+  const userList = document.getElementById('userList');
+  const taskList = document.getElementById('taskList');
+
+  // Sample user data
+  const users = [
+    { id: 1, name: 'User A' },
+    { id: 2, name: 'User B' },
+    { id: 3, name: 'User C' },
+  ];
+
+  // Sample task data
+  const tasks = [
+    { id: 1, title: 'Task 1', assignedTo: 2 },
+    { id: 2, title: 'Task 2', assignedTo: 1 },
+    { id: 3, title: 'Task 3', assignedTo: 3 },
+  ];
+
+  // Display users
+  users.forEach(user => {
+    const userItem = document.createElement('li');
+    userItem.textContent = user.name;
+    userList.appendChild(userItem);
+  });
+
+  // Display tasks
+  tasks.forEach(task => {
+    const taskItem = document.createElement('li');
+    taskItem.innerHTML = `<strong>${task.title}</strong> (Assigned to: ${users.find(user => user.id === task.assignedTo).name})`;
+    taskList.appendChild(taskItem);
+  });
+</script>
+</body>
+</html>

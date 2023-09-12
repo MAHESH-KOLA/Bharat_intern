@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Conferencing Website</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .video-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  video {
+    max-width: 49%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  .chat-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Video Conferencing Website</h1>
+</header>
+<div class="container">
+  <div class="video-container">
+    <video id="localVideo" autoplay></video>
+    <video id="remoteVideo" autoplay></video>
+  </div>
+  <div class="chat-container">
+    <h2>Textual Chat</h2>
+    <div id="chatMessages"></div>
+    <input type="text" id="chatInput" placeholder="Type your message...">
+    <button id="sendButton">Send</button>
+  </div>
+</div>
+<script>
+  // This is a simplified example and does not include actual video and chat functionality
+  // In a real application, you would need to use WebRTC for video/audio and implement a chat system
+
+  const localVideo = document.getElementById('localVideo');
+  const remoteVideo = document.getElementById('remoteVideo');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const sendButton = document.getElementById('sendButton');
+
+  // Simulate video streaming
+  localVideo.srcObject = null; // Your local video stream
+  remoteVideo.srcObject = null; // Remote video stream from other participant
+
+  // Simulate chat messages
+  sendButton.addEventListener('click', () => {
+    const message = chatInput.value;
+    if (message.trim() !== '') {
+      const messageDiv = document.createElement('div');
+      messageDiv.textContent = `You: ${message}`;
+      chatMessages.appendChild(messageDiv);
+      chatInput.value = '';
+    }
+  });
+</script>
+</body>
+</html>
